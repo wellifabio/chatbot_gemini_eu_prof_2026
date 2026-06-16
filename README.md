@@ -222,7 +222,7 @@ async function sendMessage() {
     const promptConsolidado = `${SYSTEM_INSTRUCTION}\n\n[CONTEXTO: O texto abaixo é a dúvida real do aluno. Responda seguindo estritamente as diretrizes de personalidade acima]\nAluno perguntou: ${text}`;
 
     try {
-        // SOLUÇÃO: Atualizado para o modelo estável atual gemini-2.5-flash na rota estável v1
+        // Modelo atualizado gemini-2.5-flash na rota estável v1
         const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: {
@@ -232,7 +232,7 @@ async function sendMessage() {
                 contents: [
                     {
                         parts: [
-                            { text: promptConsolidated }
+                            { text: promptConsolidado } // CORRIGIDO: Agora bate com o nome da variável acima!
                         ]
                     }
                 ]
