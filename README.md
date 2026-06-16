@@ -271,4 +271,4 @@ userInput.addEventListener('keypress', (e) => {
 - Em Build and deployment, selecione a branch main (ou master) e a pasta / (root).
 - Clique em Save.
 - Aguarde cerca de 1 a 2 minutos e o GitHub gerará um link público (geralmente [https://seu-usuario.github.io/nome-do-repositorio/](https://seu-usuario.github.io/nome-do-repositorio/)).
-- Pronto! Basta passar o link para os alunos, orientá-los a gerar uma chave gratuita no Google AI Studio (caso você não queira deixar a sua ativa por lá) e eles já podem tirar dúvidas com o seu "clone"."# chatbot_gemini_eu_prof_2026" 
+- Pronto! Basta passar o link para os alunos, orientá-los a gerar uma chave gratuita no Google AI Studio (caso você não queira deixar a sua ativa por lá) e eles já podem tirar dúvidas com o seu "clone".
