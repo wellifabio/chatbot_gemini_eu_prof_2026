@@ -43,7 +43,7 @@ async function sendMessage() {
 
     try {
         // Chamada oficial da API do Gemini usando a rota de v1beta
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -64,6 +64,7 @@ async function sendMessage() {
             appendMessage(reply, 'bot-message');
         } else {
             appendMessage("Ih, deu erro 500 na minha cabeça. Tenta de novo!", 'bot-message');
+            console.log("Erro retornado da API:", data);
         }
 
     } catch (error) {
