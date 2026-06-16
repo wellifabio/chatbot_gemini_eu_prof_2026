@@ -185,7 +185,7 @@ if (sessionStorage.getItem('gemini_key')) {
     apiKeyInput.value = sessionStorage.getItem('gemini_key');
 }
 
-// Prompt de Sistema: Personalidade do Professor Clone
+// Prompt de Sistema: Define a personalidade de professor do bot
 const SYSTEM_INSTRUCTION = `
 Você é o clone digital de um professor de Ensino Médio Técnico de Desenvolvimento de Software.
 Seu objetivo é ajudar alunos com dúvidas sobre: Lógica de Programação, Desenvolvimento Mobile com Flutter e Banco de Dados Relacional.
@@ -208,47 +208,54 @@ async function sendMessage() {
         return;
     }
 
+    // Salva a chave temporariamente na sessão do navegador
     sessionStorage.setItem('gemini_key', apiKey);
+
+    // Renderiza mensagem do usuário na tela
     appendMessage(text, 'user-message');
     userInput.value = '';
 
+    // Renderiza indicador de "digitando..."
     const typingDiv = appendMessage('Compilando resposta...', 'bot-message');
 
+    // Consolidamos a instrução com a dúvida em um único bloco de texto seguro
+    const promptConsolidado = `${SYSTEM_INSTRUCTION}\n\n[CONTEXTO: O texto abaixo é a dúvida real do aluno. Responda seguindo estritamente as diretrizes de personalidade acima]\nAluno perguntou: ${text}`;
+
     try {
-        // SOLUÇÃO DA URL: Usando a rota v1beta com o modelo gemini-1.5-flash
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        // SOLUÇÃO: Atualizado para o modelo estável atual gemini-2.5-flash na rota estável v1
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                // O formato correto aceito nesta rota para instruções de sistema
-                systemInstruction: {
-                    parts: [{ text: SYSTEM_INSTRUCTION }]
-                },
                 contents: [
                     {
-                        role: "user",
-                        parts: [{ text: text }]
+                        parts: [
+                            { text: promptConsolidated }
+                        ]
                     }
                 ]
             })
         });
 
         const data = await response.json();
-        typingDiv.remove();
+        typingDiv.remove(); // Remove o status de carregamento
 
+        // Se a API do Google retornar algum erro estruturado
         if (data.error) {
             appendMessage(`⚠️ Erro do Google: ${data.error.message} (Código ${data.error.code})`, 'bot-message');
-            console.log("Erro completo:", data.error);
+            console.log("Erro retornado da API:", data.error);
             return;
         }
 
+        // Verifica se a resposta contém o texto gerado
         if (data.candidates && data.candidates[0].content.parts[0].text) {
             let reply = data.candidates[0].content.parts[0].text;
             appendMessage(reply, 'bot-message');
         } else {
-            appendMessage("O servidor respondeu, mas não gerou texto. Estrutura: " + JSON.stringify(data), 'bot-message');
+            appendMessage("Ué, o robô não gerou uma resposta válida. Verifique o console.", 'bot-message');
+            console.log("Estrutura recebida incomum:", data);
         }
 
     } catch (error) {
