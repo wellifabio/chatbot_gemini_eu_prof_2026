@@ -8,7 +8,7 @@ if (sessionStorage.getItem('gemini_key')) {
     apiKeyInput.value = sessionStorage.getItem('gemini_key');
 }
 
-// Prompt de Sistema: Define a personalidade de professor do bot
+// Prompt de Sistema: Define a personalidade do seu clone de IA
 const SYSTEM_INSTRUCTION = `
 Você é o clone digital de um professor de Ensino Médio Técnico de Desenvolvimento de Software.
 Seu objetivo é ajudar alunos com dúvidas sobre: Lógica de Programação, Desenvolvimento Mobile com Flutter e Banco de Dados Relacional.
@@ -42,18 +42,19 @@ async function sendMessage() {
     const typingDiv = appendMessage('Compilando resposta...', 'bot-message');
 
     try {
-        // Chamada oficial usando a rota v1
+        // Chamada oficial usando a rota v1 estável
         const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                // Ajustado para snake_case conforme exigido na v1
-                system_instruction: {
-                    parts: [{ text: SYSTEM_INSTRUCTION }]
-                },
+                // Solução: Instrução do sistema injetada como role 'system' dentro de contents
                 contents: [
+                    {
+                        role: "system",
+                        parts: [{ text: SYSTEM_INSTRUCTION }]
+                    },
                     {
                         role: "user",
                         parts: [{ text: text }]
