@@ -283,6 +283,11 @@ userInput.addEventListener('keypress', (e) => {
 - Crie um repositório público no seu GitHub (ex: plantao-profe-ai).
 - Suba esses 3 arquivos (index.html, style.css, script.js) para a branch principal (main ou master).
 - No seu repositório do GitHub, vá em Settings (Configurações) > Pages (na barra lateral esquerda).
+
+### Passos para Obter a Chave de API do Google Maps
+- 1 Acesse o [Google Cloud Console](https://console.cloud.google.com/).
+- 2 Faça Login com sua conta gmail, "não é necessário colocar cartão de crédito".
+- 3 Pesquise por **Criar chave da API GEMINI**
 - Em Build and deployment, selecione a branch main (ou master) e a pasta / (root).
 - Clique em Save.
 - Aguarde cerca de 1 a 2 minutos e o GitHub gerará um link público (geralmente [https://seu-usuario.github.io/nome-do-repositorio/](https://seu-usuario.github.io/nome-do-repositorio/)).
