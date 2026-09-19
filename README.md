@@ -1,4 +1,4 @@
-# Chatbot wellifabio Gemini
+# Chatbot wellifabio [Gemini](gemini.google.com)
 Chatbot que responde alunos no meu lugar
 
 Boa tarde, quero que me ajude a criar um chatbot(html, css e JavaScript) que simule ser eu, através da API do GEMINI, e fique hospedado no git pages
