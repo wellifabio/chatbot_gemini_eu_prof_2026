@@ -288,7 +288,12 @@ userInput.addEventListener('keypress', (e) => {
 - Aguarde cerca de 1 a 2 minutos e o GitHub gerará um link público (geralmente [https://seu-usuario.github.io/nome-do-repositorio/](https://seu-usuario.github.io/nome-do-repositorio/)).
 - Pronto! Basta passar o link para os alunos, orientá-los a gerar uma chave gratuita no Google AI Studio (caso você não queira deixar a sua ativa por lá) e eles já podem tirar dúvidas com o seu "clone".
 
-### Passos para Obter a Chave de API do Google Maps
-- 1 Acesse o [Google Cloud Console](https://console.cloud.google.com/).
-- 2 Faça Login com sua conta gmail, "não é necessário colocar cartão de crédito".
-- 3 Pesquise por **Criar chave da API GEMINI**
+## Obter a Chave de API do GEMINI
+- 1 Acesse o [Google AI Studio](https://aistudio.google.com/prompts/new_chat).
+	- Faça Login com sua conta gmail.
+- 2 Abra a seção de chaves
+	- No menu lateral (geralmente no canto inferior esquerdo ou no painel principal), clique no botão Get API key (ou Criar chave de API).
+- 3 Crie a nova chave
+	- Clique em Create API key. Escolha se deseja criar a chave em um projeto existente do Google Cloud ou se prefere que a plataforma crie um projeto novo automaticamente.
+- 4 Copie e armazene a chave com segurança:
+	- Após a geração, copie o texto da chave gerada e salve-o em um loca
