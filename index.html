@@ -16,9 +16,8 @@
         <div class="chat-header">
             <h2><img src="https://github.com/wellifabio/wellifabio.github.io/blob/master/assets/avts/av3.webp?raw=true"
                     alt="Ícone Wellington" width="55"> Prof. AI (Plantão de Dúvidas)</h2>
-            <input type="password" id="api-key" placeholder="Cole sua Gemini API Key aqui..."><button id="tutor"
-                onclick="modal.classList.remove('oculto')">Obter a
-                chave</button>
+            <button id="tutor" onclick="modal.classList.remove('oculto')">Obter a
+                chave</button><input type="password" id="api-key" placeholder="Cole sua Gemini API Key aqui..." onchange="alert('Vamos conversar...')">
         </div>
 
         <div class="chat-box" id="chat-box">
@@ -37,11 +36,13 @@
         <div class="janela">
             <h1>Obter a Chave de API do GEMINI</h1>
             <ul>
-                <li>1 Acesse o <a href="https://aistudio.google.com/prompts/new_chat" target="blanck">Google AI Studio</a>.<br>Faça Login com sua conta gmail.</li>
+                <li>1 Acesse o <a href="https://aistudio.google.com/prompts/new_chat" target="blanck">Google AI
+                        Studio</a>.<br>Faça Login com sua conta gmail.</li>
                 <li>2 Abra a seção de chaves<br>No menu lateral (geralmente no canto inferior esquerdo ou no painel
                     principal),<br>clique no botão Get API key (ou Criar chave de API).</li>
                 <li>3 Crie a nova chave<br>Clique em Create API key.<br>Escolha se deseja criar a chave em um projeto
-                    existente do Google Cloud<br>ou se prefere que a plataforma crie um projeto novo automaticamente.</li>
+                    existente do Google Cloud<br>ou se prefere que a plataforma crie um projeto novo automaticamente.
+                </li>
                 <li>4 Copie e armazene a chave com segurança:<br>Após a geração, copie o texto da chave gerada e
                     salve-o em um local seguro.</li>
             </ul>
